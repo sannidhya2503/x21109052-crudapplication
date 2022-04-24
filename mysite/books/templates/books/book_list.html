@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block javascript %}
+<script src="{% static 'books/js/books.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<h1 class="page-header" style="text-align: center;color: green;">Django CRUD Operation</h1><br>
+
+<p>
+  <!-- create New Book -->
+  <button title="Create New book" style="border-radius: 18px;" type="button" class="btn btn-primary js-create-book"
+    data-url="{% url 'book_create' %}">
+    <span class="glyphicon glyphicon-plus"></span>
+
+  </button>
+</p>
+
+<table class="table" id="book-table">
+  <thead>
+    <tr>
+      <th style="color: #337ab7;font-size: 18px;">#</th>
+      <th style="color: #337ab7;font-size: 17px;">Title</th>
+      <th style="color: #337ab7;font-size: 17px;">Author</th>
+      <th style="color: #337ab7;font-size: 17px;">Type</th>
+      <th style="color: #337ab7;font-size: 17px;">Publication date</th>
+      <th style="color: #337ab7;font-size: 17px;">Pages</th>
+      <th style="color: #337ab7;font-size: 17px;">Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% include 'books/includes/partial_book_list.html' %}
+  </tbody>
+</table>
+<!-- pop up -->
+<div class="modal fade" id="modal-book">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+    </div>
+  </div>
+</div>
+{% endblock %}
